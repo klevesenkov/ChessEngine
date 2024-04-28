@@ -35,11 +35,13 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1418, 815);
+            BackColor = SystemColors.Control;
+            ClientSize = new Size(1420, 820);
             Icon = (Icon)resources.GetObject("$this.Icon");
             ImeMode = ImeMode.On;
             Name = "frmMainForm";
             Text = "ChessEngine";
+            Paint += frmMainForm_Paint;
             ResumeLayout(false);
         }
 
