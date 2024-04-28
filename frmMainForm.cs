@@ -24,11 +24,27 @@ namespace ChessEngine
         int offsetX = 99;
         int offsetY = 99;
 
+        Graphics GR;
 
+        /*
+         * A - LW
+         * B - KnW
+         * C - SW
+         * D - KW
+         * E - FW
+         * F - PW
+         * G - LB
+         * H - KnB
+         * I - SB
+         * K - KB
+         * L - FB
+         * M - PB
+        */
+        string Pole = "GHILKIHGMMMMMMMM--------------------------------FFFFFFFFABCEDCBA";
 
         public frmMainForm()
         {
-            InitializeComponent();
+            InitializeComponent();            
 
             imgDoska = Properties.Resources.doska;
             imgKW = Properties.Resources.KW;
@@ -42,7 +58,7 @@ namespace ChessEngine
             imgLB = Properties.Resources.LB;
             imgKnB = Properties.Resources.KnB;
             imgPB = Properties.Resources.PB;
-            imgSB = Properties.Resources.SB;
+            imgSB = Properties.Resources.SB;            
         }
 
         private void frmMainForm_Paint(object sender, PaintEventArgs e)
@@ -81,8 +97,12 @@ namespace ChessEngine
             e.Graphics.DrawImage(imgKB, startFigureX + 4 * offsetX, startFigureY + 0 * offsetY, widthFigure, heightFigure);
             e.Graphics.DrawImage(imgSB, startFigureX + 5 * offsetX, startFigureY + 0 * offsetY, widthFigure, heightFigure);
             e.Graphics.DrawImage(imgKnB, startFigureX + 6 * offsetX, startFigureY + 0 * offsetY, widthFigure, heightFigure);
-            e.Graphics.DrawImage(imgLB, startFigureX + 7 * offsetX, startFigureY + 0 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgLB, startFigureX + 7 * offsetX, startFigureY + 0 * offsetY, widthFigure, heightFigure);                      
         }
-        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Refresh();
+        }
     }
 }

@@ -29,7 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMainForm));
+            button1 = new Button();
             SuspendLayout();
+            // 
+            // button1
+            // 
+            button1.Location = new Point(1240, 95);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 0;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // frmMainForm
             // 
@@ -37,6 +48,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(1420, 849);
+            Controls.Add(button1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             ImeMode = ImeMode.On;
             MaximizeBox = false;
@@ -49,5 +61,7 @@
         }
 
         #endregion
+
+        private Button button1;
     }
 }
