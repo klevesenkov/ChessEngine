@@ -23,8 +23,8 @@ namespace ChessEngine
         int heightFigure = 90;
         int offsetX = 99;
         int offsetY = 99;
-        int widthLine = 5;
-        int heightLine = 5;
+
+
 
         public frmMainForm()
         {
@@ -43,8 +43,6 @@ namespace ChessEngine
             imgKnB = Properties.Resources.KnB;
             imgPB = Properties.Resources.PB;
             imgSB = Properties.Resources.SB;
-
-
         }
 
         private void frmMainForm_Paint(object sender, PaintEventArgs e)
@@ -85,5 +83,6 @@ namespace ChessEngine
             e.Graphics.DrawImage(imgKnB, startFigureX + 6 * offsetX, startFigureY + 0 * offsetY, widthFigure, heightFigure);
             e.Graphics.DrawImage(imgLB, startFigureX + 7 * offsetX, startFigureY + 0 * offsetY, widthFigure, heightFigure);
         }
+        
     }
 }
