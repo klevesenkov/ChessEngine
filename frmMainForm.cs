@@ -4,6 +4,18 @@ namespace ChessEngine
     {
         Image imgDoska;
         Image imgKW;
+        Image imgFW;
+        Image imgLW;
+        Image imgKnW;
+        Image imgPW;
+        Image imgSW;
+        Image imgKB;
+        Image imgFB;
+        Image imgLB;
+        Image imgKnB;
+        Image imgPB;
+        Image imgSB;
+
 
         int startFigureX = 33;
         int startFigureY = 33;
@@ -20,21 +32,58 @@ namespace ChessEngine
 
             imgDoska = Properties.Resources.doska;
             imgKW = Properties.Resources.KW;
-            
-            
+            imgFW = Properties.Resources.FW;
+            imgLW = Properties.Resources.LW;
+            imgKnW = Properties.Resources.KnW;
+            imgPW = Properties.Resources.PW;
+            imgSW = Properties.Resources.SW;
+            imgKB = Properties.Resources.KB;
+            imgFB = Properties.Resources.FB;
+            imgLB = Properties.Resources.LB;
+            imgKnB = Properties.Resources.KnB;
+            imgPB = Properties.Resources.PB;
+            imgSB = Properties.Resources.SB;
+
+
         }
 
         private void frmMainForm_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawImage(imgDoska, 0, 0, 850, 850);
-            e.Graphics.DrawImage(imgKW, startFigureX, startFigureY, widthFigure, heightFigure);
-            e.Graphics.DrawImage(imgKW, startFigureX + offsetX, startFigureY + offsetY, widthFigure, heightFigure);
-            e.Graphics.DrawImage(imgKW, startFigureX + 2 * offsetX, startFigureY + 2 * offsetY, widthFigure, heightFigure);
-            e.Graphics.DrawImage(imgKW, startFigureX + 3 * offsetX, startFigureY + 3 * offsetY, widthFigure, heightFigure);
-            e.Graphics.DrawImage(imgKW, startFigureX + 4 * offsetX, startFigureY + 4 * offsetY, widthFigure, heightFigure);
-            e.Graphics.DrawImage(imgKW, startFigureX + 5 * offsetX, startFigureY + 5 * offsetY, widthFigure, heightFigure);
-            e.Graphics.DrawImage(imgKW, startFigureX + 6 * offsetX, startFigureY + 6 * offsetY, widthFigure, heightFigure);
-            e.Graphics.DrawImage(imgKW, startFigureX + 7 * offsetX, startFigureY + 7 * offsetY, widthFigure, heightFigure);
+
+            e.Graphics.DrawImage(imgPW, startFigureX + 0 * offsetX, startFigureY + 6 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgPW, startFigureX + 1 * offsetX, startFigureY + 6 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgPW, startFigureX + 2 * offsetX, startFigureY + 6 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgPW, startFigureX + 3 * offsetX, startFigureY + 6 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgPW, startFigureX + 4 * offsetX, startFigureY + 6 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgPW, startFigureX + 5 * offsetX, startFigureY + 6 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgPW, startFigureX + 6 * offsetX, startFigureY + 6 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgPW, startFigureX + 7 * offsetX, startFigureY + 6 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgLW, startFigureX + 0 * offsetX, startFigureY + 7 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgKnW, startFigureX + 1 * offsetX, startFigureY + 7 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgSW, startFigureX + 2 * offsetX, startFigureY + 7 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgFW, startFigureX + 3 * offsetX, startFigureY + 7 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgKW, startFigureX + 4 * offsetX, startFigureY + 7 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgSW, startFigureX + 5 * offsetX, startFigureY + 7 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgKnW, startFigureX + 6 * offsetX, startFigureY + 7 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgLW, startFigureX + 7 * offsetX, startFigureY + 7 * offsetY, widthFigure, heightFigure);
+
+            e.Graphics.DrawImage(imgPB, startFigureX + 0 * offsetX, startFigureY + 1 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgPB, startFigureX + 1 * offsetX, startFigureY + 1 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgPB, startFigureX + 2 * offsetX, startFigureY + 1 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgPB, startFigureX + 3 * offsetX, startFigureY + 1 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgPB, startFigureX + 4 * offsetX, startFigureY + 1 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgPB, startFigureX + 5 * offsetX, startFigureY + 1 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgPB, startFigureX + 6 * offsetX, startFigureY + 1 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgPB, startFigureX + 7 * offsetX, startFigureY + 1 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgLB, startFigureX + 0 * offsetX, startFigureY + 0 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgKnB, startFigureX + 1 * offsetX, startFigureY + 0 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgSB, startFigureX + 2 * offsetX, startFigureY + 0 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgFB, startFigureX + 3 * offsetX, startFigureY + 0 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgKB, startFigureX + 4 * offsetX, startFigureY + 0 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgSB, startFigureX + 5 * offsetX, startFigureY + 0 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgKnB, startFigureX + 6 * offsetX, startFigureY + 0 * offsetY, widthFigure, heightFigure);
+            e.Graphics.DrawImage(imgLB, startFigureX + 7 * offsetX, startFigureY + 0 * offsetY, widthFigure, heightFigure);
         }
     }
 }

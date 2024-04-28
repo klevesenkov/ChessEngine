@@ -121,7 +121,40 @@
   <data name="doska" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\doska.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FB.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="KB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\KB.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="KnB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\KnB.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="KnW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\KnW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="KW" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\KW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LB.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PB.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SB.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SW" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
