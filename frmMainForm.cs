@@ -23,11 +23,13 @@ namespace ChessEngine
             initilizationPole(pole.initialState);                     
         }
 
+        // Отрисовка шахматной доски
         private void frmMainForm_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawImage(imgDoska, 0, 0, 850, 850);           
         }
 
+        // служжебная кнопка
         private void button1_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
@@ -35,6 +37,7 @@ namespace ChessEngine
             pbxPW1.Location = new Point(startFigureX + rnd.Next(0, 7) * offsetX, startFigureY + rnd2.Next(0, 7) * offsetY);
         }
 
+        // расстановка фигур в начальных позициях
         private void initilizationPole(string pole)
         {
             pbxPW1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -138,5 +141,11 @@ namespace ChessEngine
             pbxKnB2.Location = new Point(startFigureX + 6 * offsetX, startFigureY + 0 * offsetY);
             pbxLB2.Location = new Point(startFigureX + 7 * offsetX, startFigureY + 0 * offsetY);
         }        
+
+        // делаем ход фигурой
+        private void Step()
+        {
+
+        }
     }
 }
