@@ -62,6 +62,9 @@
             pbxPB6 = new PictureBox();
             pbxPB7 = new PictureBox();
             pbxPB8 = new PictureBox();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)pbxFW).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxLW1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbxKnW1).BeginInit();
@@ -458,12 +461,42 @@
             pbxPB8.TabIndex = 32;
             pbxPB8.TabStop = false;
             // 
-            // frmMainForm
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(1121, 178);
+            label1.Name = "label1";
+            label1.Size = new Size(38, 15);
+            label1.TabIndex = 33;
+            label1.Text = "label1";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(1149, 248);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 34;
+            label2.Text = "label2";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(1170, 325);
+            label3.Name = "label3";
+            label3.Size = new Size(38, 15);
+            label3.TabIndex = 35;
+            label3.Text = "label3";
+            // 
+            // FrmMainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
             ClientSize = new Size(1420, 849);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(pbxPB8);
             Controls.Add(pbxPB7);
             Controls.Add(pbxPB6);
@@ -501,7 +534,7 @@
             ImeMode = ImeMode.On;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "frmMainForm";
+            Name = "FrmMainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ChessEngine";
             Paint += frmMainForm_Paint;
@@ -538,6 +571,7 @@
             ((System.ComponentModel.ISupportInitialize)pbxPB7).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbxPB8).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -575,5 +609,8 @@
         private PictureBox pbxPB6;
         private PictureBox pbxPB7;
         private PictureBox pbxPB8;
+        private Label label1;
+        private Label label2;
+        private Label label3;
     }
 }

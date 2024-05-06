@@ -50,7 +50,13 @@ namespace ChessEngine
         {
             InitializeComponent();
             imgDoska = Properties.Resources.doska;            
-            initilizationPole(pole.initialState);                     
+            initilizationPole(pole.initialState);  
+
+            //////////////////////////////////////////////
+            pole.currentState = pole.initialState;
+            label2.Text = pole.currentValueWhite().ToString();
+            label3.Text = pole.currentValueBlack().ToString();
+            /////////////////////////////////////////////////
         }
 
         /// <summary>

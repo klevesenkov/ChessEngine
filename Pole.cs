@@ -73,7 +73,7 @@ namespace ChessEngine
         /// <summary>
         /// Начальное положение
         /// </summary>
-        public string initialState = "GHILKIHGMMMMMMMM--------------------------------FFFFFFFFABCEDCBA";
+        public const string initialState = "34567890STVWXZ12--------------------------------IKLMNPQRABCDEFGH";
 
         /// <summary>
         /// Текущее положение
