@@ -43,19 +43,22 @@ namespace ChessEngine
         /// <summary>
         /// расстояние между фигурами
         /// </summary>
-        const int offsetY = 99; 
-        
+        const int offsetY = 99;
+
+        /// <summary>
+        /// Текущее состояние поля
+        /// </summary>
+        string currentState = "----------------------------------------------------------------";
 
         public FrmMainForm()
         {
             InitializeComponent();
-            imgDoska = Properties.Resources.doska;            
-            initilizationPole(pole.initialState);  
+            imgDoska = Properties.Resources.doska;
+            drawingPole(pole.initialState);  
 
             //////////////////////////////////////////////
-            pole.currentState = pole.initialState;
-            label2.Text = pole.currentValueWhite().ToString();
-            label3.Text = pole.currentValueBlack().ToString();
+            label2.Text = pole.currentValueWhite(pole.initialState).ToString();
+            label3.Text = pole.currentValueBlack(pole.initialState).ToString();
             /////////////////////////////////////////////////
         }
 
@@ -76,17 +79,28 @@ namespace ChessEngine
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
-            Random rnd = new Random();
+            /*Random rnd = new Random();
             Random rnd2 = new Random();
-            pbxPW1.Location = new Point(startFigureX + rnd.Next(0, 7) * offsetX, startFigureY + rnd2.Next(0, 7) * offsetY);
+            pbxPW1.Location = new Point(startFigureX + rnd.Next(0, 7) * offsetX, startFigureY + rnd2.Next(0, 7) * offsetY);*/
+
+            drawingPole("34567890STVWXZ12-----------B--------------------IKLMNPQRA-CDEFGH");
         }
 
         /// <summary>
-        /// расстановка фигур в начальных позициях
+        /// Отрисовка фигур на доске
         /// </summary>
-        /// <param name="pole"></param>
-        private void initilizationPole(string pole)
+        /// <param name="newState">новое состояние фигур</param>
+        private void drawingPole(string newState)
         {
+            /*
+             * на вход новое состояние, сравниваем с текущим состояние и отрисовываем только ходы
+             */
+
+            /// координаты фигуры на доске для отрисовки
+            int x = 0;
+            int y = 0;
+
+            // Устанавливаем размеры фигур
             pbxPW1.SizeMode = PictureBoxSizeMode.Zoom;
             pbxPW1.Size = new Size(widthFigure, heightFigure);
             pbxPW2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -119,7 +133,6 @@ namespace ChessEngine
             pbxKnW2.Size = new Size(widthFigure, heightFigure);
             pbxLW2.SizeMode = PictureBoxSizeMode.Zoom;
             pbxLW2.Size = new Size(widthFigure, heightFigure);
-
             pbxPB1.SizeMode = PictureBoxSizeMode.Zoom;
             pbxPB1.Size = new Size(widthFigure, heightFigure);
             pbxPB2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -153,48 +166,52 @@ namespace ChessEngine
             pbxLB2.SizeMode = PictureBoxSizeMode.Zoom;
             pbxLB2.Size = new Size(widthFigure, heightFigure);
 
+            // отрисовываем ход
+            for (int i = 0; i <= 63; i++)
+            {
+                if (newState[i] != currentState[i])
+                {
+                    y = i / 8;
+                    x = i - 8 * y;                    
 
-            pbxPW1.Location = new Point(startFigureX + 0 * offsetX, startFigureY + 6 * offsetY);
-            pbxPW2.Location = new Point(startFigureX + 1 * offsetX, startFigureY + 6 * offsetY);
-            pbxPW3.Location = new Point(startFigureX + 2 * offsetX, startFigureY + 6 * offsetY);
-            pbxPW4.Location = new Point(startFigureX + 3 * offsetX, startFigureY + 6 * offsetY);
-            pbxPW5.Location = new Point(startFigureX + 4 * offsetX, startFigureY + 6 * offsetY);
-            pbxPW6.Location = new Point(startFigureX + 5 * offsetX, startFigureY + 6 * offsetY);
-            pbxPW7.Location = new Point(startFigureX + 6 * offsetX, startFigureY + 6 * offsetY);
-            pbxPW8.Location = new Point(startFigureX + 7 * offsetX, startFigureY + 6 * offsetY);
-            pbxLW1.Location = new Point(startFigureX + 0 * offsetX, startFigureY + 7 * offsetY);
-            pbxKnW1.Location = new Point(startFigureX + 1 * offsetX, startFigureY + 7 * offsetY);
-            pbxSW1.Location = new Point(startFigureX + 2 * offsetX, startFigureY + 7 * offsetY);
-            pbxFW.Location = new Point(startFigureX + 3 * offsetX, startFigureY + 7 * offsetY);
-            pbxKW.Location = new Point(startFigureX + 4 * offsetX, startFigureY + 7 * offsetY);
-            pbxSW2.Location = new Point(startFigureX + 5 * offsetX, startFigureY + 7 * offsetY);
-            pbxKnW2.Location = new Point(startFigureX + 6 * offsetX, startFigureY + 7 * offsetY);
-            pbxLW2.Location = new Point(startFigureX + 7 * offsetX, startFigureY + 7 * offsetY);
+                    switch (newState[i])
+                    {
+                        case 'I': pbxPW1.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'K': pbxPW2.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'L': pbxPW3.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'M': pbxPW4.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'N': pbxPW5.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'P': pbxPW6.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'Q': pbxPW7.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'R': pbxPW8.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'A': pbxLW1.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'H': pbxLW2.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'B': pbxKnW1.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'G': pbxKnW2.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'C': pbxSW1.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'F': pbxSW2.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'D': pbxFW.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'E': pbxKW.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
 
-            pbxPB1.Location = new Point(startFigureX + 0 * offsetX, startFigureY + 1 * offsetY);
-            pbxPB2.Location = new Point(startFigureX + 1 * offsetX, startFigureY + 1 * offsetY);
-            pbxPB3.Location = new Point(startFigureX + 2 * offsetX, startFigureY + 1 * offsetY);
-            pbxPB4.Location = new Point(startFigureX + 3 * offsetX, startFigureY + 1 * offsetY);
-            pbxPB5.Location = new Point(startFigureX + 4 * offsetX, startFigureY + 1 * offsetY);
-            pbxPB6.Location = new Point(startFigureX + 5 * offsetX, startFigureY + 1 * offsetY);
-            pbxPB7.Location = new Point(startFigureX + 6 * offsetX, startFigureY + 1 * offsetY);
-            pbxPB8.Location = new Point(startFigureX + 7 * offsetX, startFigureY + 1 * offsetY);
-            pbxLB1.Location = new Point(startFigureX + 0 * offsetX, startFigureY + 0 * offsetY);
-            pbxKnB1.Location = new Point(startFigureX + 1 * offsetX, startFigureY + 0 * offsetY);
-            pbxSB1.Location = new Point(startFigureX + 2 * offsetX, startFigureY + 0 * offsetY);
-            pbxFB.Location = new Point(startFigureX + 3 * offsetX, startFigureY + 0 * offsetY);
-            pbxKB.Location = new Point(startFigureX + 4 * offsetX, startFigureY + 0 * offsetY);
-            pbxSB2.Location = new Point(startFigureX + 5 * offsetX, startFigureY + 0 * offsetY);
-            pbxKnB2.Location = new Point(startFigureX + 6 * offsetX, startFigureY + 0 * offsetY);
-            pbxLB2.Location = new Point(startFigureX + 7 * offsetX, startFigureY + 0 * offsetY);
-        }        
-
-        /// <summary>
-        /// отрисовка хода фигурой
-        /// </summary>
-        private void Step()
-        {
-
-        }
+                        case 'S': pbxPB1.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'T': pbxPB2.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'V': pbxPB3.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'W': pbxPB4.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'X': pbxPB5.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case 'Z': pbxPB6.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case '1': pbxPB7.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case '2': pbxPB8.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case '3': pbxLB1.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case '0': pbxLB2.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case '4': pbxKnB1.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case '9': pbxKnB2.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case '5': pbxSB1.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case '8': pbxSB2.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case '6': pbxFB.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                        case '7': pbxKB.Location = new Point(startFigureX + x * offsetX, startFigureY + y * offsetY); break;
+                    }
+                }                
+            }
+        } 
     }
 }

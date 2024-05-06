@@ -73,24 +73,20 @@ namespace ChessEngine
         /// <summary>
         /// Начальное положение
         /// </summary>
-        public const string initialState = "34567890STVWXZ12--------------------------------IKLMNPQRABCDEFGH";
+        public readonly string initialState = "34567890STVWXZ12--------------------------------IKLMNPQRABCDEFGH";
 
         /// <summary>
-        /// Текущее положение
+        /// Подсчет стоимости положения фигур для Белых
         /// </summary>
-        public string currentState = "";
-
-        /// <summary>
-        /// Оценка текущего положения для Белых
-        /// </summary>
-        /// <returns>int</returns>
-        public int currentValueWhite()
+        /// <param name="state">строка состояния поля</param>
+        /// <returns>оценка (int)</returns>
+        public int currentValueWhite(string state)
         {
             int value = 0;
-            foreach(char c in currentState)
+            foreach(char c in state)
             {
                 if (c == '3' || c == '0') { value -= costLadya; }
-                if ((64 - (currentState.Count(c => c == '-')) / 32) * 100 >= percent) {
+                if ((64 - (state.Count(c => c == '-')) / 32) * 100 >= percent) {
                     if (c == '4' || c == '9') { value -= costKonMorePercent; }
                     if (c == '5' || c == '8') { value -= costSlonMorePercent; } }
                 else {
@@ -102,7 +98,7 @@ namespace ChessEngine
                 if (c == 'S' || c == 'T' || c == 'V' || c == 'W' || c == 'X' || c == 'Z' || c == '1' || c == '2') { value -= costPeshka; }
 
                 if (c == 'A' || c == 'H') { value += costLadya; }
-                if ((64 - (currentState.Count(c => c == '-')) / 32) * 100 >= percent)
+                if ((64 - (state.Count(c => c == '-')) / 32) * 100 >= percent)
                 {
                     if (c == 'B' || c == 'G') { value += costKonMorePercent; }
                     if (c == 'C' || c == 'F') { value += costSlonMorePercent; }
@@ -120,16 +116,17 @@ namespace ChessEngine
         }
 
         /// <summary>
-        /// Оценка текущего положения для Черных
+        /// Подсчет стоимости положения фигур для Черных
         /// </summary>
-        /// <returns>int</returns>
-        public int currentValueBlack()
+        /// <param name="state">строка состояния поля</param>
+        /// <returns>оценка (int)</returns>
+        public int currentValueBlack(string state)
         {
             int value = 0;
-            foreach (char c in currentState)
+            foreach (char c in state)
             {
                 if (c == '3' || c == '0') { value += costLadya; }
-                if ((64 - (currentState.Count(c => c == '-')) / 32) * 100 >= percent)
+                if ((64 - (state.Count(c => c == '-')) / 32) * 100 >= percent)
                 {
                     if (c == '4' || c == '9') { value += costKonMorePercent; }
                     if (c == '5' || c == '8') { value += costSlonMorePercent; }
@@ -144,7 +141,7 @@ namespace ChessEngine
                 if (c == 'S' || c == 'T' || c == 'V' || c == 'W' || c == 'X' || c == 'Z' || c == '1' || c == '2') { value += costPeshka; }
 
                 if (c == 'A' || c == 'H') { value -= costLadya; }
-                if ((64 - (currentState.Count(c => c == '-')) / 32) * 100 >= percent)
+                if ((64 - (state.Count(c => c == '-')) / 32) * 100 >= percent)
                 {
                     if (c == 'B' || c == 'G') { value -= costKonMorePercent; }
                     if (c == 'C' || c == 'F') { value -= costSlonMorePercent; }
