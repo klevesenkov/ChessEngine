@@ -21,31 +21,69 @@ namespace ChessEngine
     /// </summary>
     internal class Pole
     {
-        //  Оценка фигур        
+        /// <summary>
+        /// Стоимость пешки
+        /// </summary>
         const int costPeshka = 1;  
         
-        // Больше или меньше определенного количество фигур на доске
+        /// <summary>
+        /// Стоимость Коня
+        /// больше определенного количество фигур на доске
+        /// </summary>
         const int costKonMorePercent = 4;
+
+        /// <summary>
+        /// Стоимость Коня
+        /// меньше определенного количество фигур на доске
+        /// </summary>
         const int costKonLessPercent = 2;
 
-        // Больше или меньше определенного количество фигур на доске
+        /// <summary>
+        /// Стоимость Слона
+        /// больше определенного количество фигур на доске
+        /// </summary>
         const int costSlonMorePercent = 2;
+
+        /// <summary>
+        /// Стоимость Слона
+        /// меньше определенного количество фигур на доске
+        /// </summary>
         const int costSlonLessPercent = 4;
 
-        // Процент фигур на доске для подсчета оценки
+        /// <summary>
+        /// Процент фигур на доске для подсчета оценки
+        /// </summary>
         const int percent = 50;
 
+        /// <summary>
+        /// стоимость ладьи
+        /// </summary>
         const int costLadya = 5;
-        const int costFerz = 20;
-        const int costKorol = 1000;
 
-        // Начальное положение
+        /// <summary>
+        /// Стоимость Ферзя
+        /// </summary>
+        const int costFerz = 20;
+
+        /// <summary>
+        /// Стоимость Короля
+        /// </summary>
+        const int costKorol = 1000;
+                
+        /// <summary>
+        /// Начальное положение
+        /// </summary>
         public string initialState = "GHILKIHGMMMMMMMM--------------------------------FFFFFFFFABCEDCBA";
 
-        // Текущее положение
+        /// <summary>
+        /// Текущее положение
+        /// </summary>
         public string currentState = "";
 
-        // Оценка текущего положения для Белых
+        /// <summary>
+        /// Оценка текущего положения для Белых
+        /// </summary>
+        /// <returns>int</returns>
         public int currentValueWhite()
         {
             int value = 0;
@@ -81,7 +119,10 @@ namespace ChessEngine
             return value;
         }
 
-        // Оценка текущего положения для Черных
+        /// <summary>
+        /// Оценка текущего положения для Черных
+        /// </summary>
+        /// <returns>int</returns>
         public int currentValueBlack()
         {
             int value = 0;

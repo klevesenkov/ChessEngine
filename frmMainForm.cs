@@ -5,36 +5,69 @@ namespace ChessEngine
 {
     public partial class FrmMainForm : Form
     {
+        /// <summary>
+        /// Картинка доски
+        /// </summary>
         Image imgDoska;
+
+        /// <summary>
+        /// Хранение состояния поля, движение фигур, оценка состояния
+        /// </summary>
         Pole pole = new();
 
-        // смещение и размер фигур относительно друг друга на доске
+        /// <summary>
+        /// начальная координата фигуры на доске
+        /// </summary>
         const int startFigureX = 33;
+
+        /// <summary>
+        /// начальная координата фигуры на доске
+        /// </summary>
         const int startFigureY = 33;
+
+        /// <summary>
+        /// ширина фигуры на доске
+        /// </summary>
         const int widthFigure = 90;
+
+        /// <summary>
+        /// высота фигуры на доске
+        /// </summary>
         const int heightFigure = 90;
+
+        /// <summary>
+        /// расстояние между фигурами
+        /// </summary>
         const int offsetX = 99;
+
+        /// <summary>
+        /// расстояние между фигурами
+        /// </summary>
         const int offsetY = 99; 
         
 
         public FrmMainForm()
         {
             InitializeComponent();
-
-            // отрисовка доски
-            imgDoska = Properties.Resources.doska;
-
-            // отрисовка начального положения фигур
+            imgDoska = Properties.Resources.doska;            
             initilizationPole(pole.initialState);                     
         }
 
-        // Отрисовка шахматной доски
+        /// <summary>
+        /// Отрисовка шахматной доски
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmMainForm_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawImage(imgDoska, 0, 0, 850, 850);           
         }
 
-        // служжебная кнопка
+        /// <summary>
+        /// служжебная кнопка
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
@@ -42,7 +75,10 @@ namespace ChessEngine
             pbxPW1.Location = new Point(startFigureX + rnd.Next(0, 7) * offsetX, startFigureY + rnd2.Next(0, 7) * offsetY);
         }
 
-        // расстановка фигур в начальных позициях
+        /// <summary>
+        /// расстановка фигур в начальных позициях
+        /// </summary>
+        /// <param name="pole"></param>
         private void initilizationPole(string pole)
         {
             pbxPW1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -147,7 +183,9 @@ namespace ChessEngine
             pbxLB2.Location = new Point(startFigureX + 7 * offsetX, startFigureY + 0 * offsetY);
         }        
 
-        // отрисовка хода фигурой
+        /// <summary>
+        /// отрисовка хода фигурой
+        /// </summary>
         private void Step()
         {
 
