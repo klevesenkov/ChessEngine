@@ -6,20 +6,25 @@ namespace ChessEngine
     public partial class FrmMainForm : Form
     {
         Image imgDoska;
-        Pole pole = new Pole();
+        Pole pole = new();
 
-        int startFigureX = 33;
-        int startFigureY = 33;
-        int widthFigure = 90;
-        int heightFigure = 90;
-        int offsetX = 99;
-        int offsetY = 99; 
+        // смещение и размер фигур относительно друг друга на доске
+        const int startFigureX = 33;
+        const int startFigureY = 33;
+        const int widthFigure = 90;
+        const int heightFigure = 90;
+        const int offsetX = 99;
+        const int offsetY = 99; 
         
 
         public FrmMainForm()
         {
             InitializeComponent();
+
+            // отрисовка доски
             imgDoska = Properties.Resources.doska;
+
+            // отрисовка начального положения фигур
             initilizationPole(pole.initialState);                     
         }
 
@@ -142,7 +147,7 @@ namespace ChessEngine
             pbxLB2.Location = new Point(startFigureX + 7 * offsetX, startFigureY + 0 * offsetY);
         }        
 
-        // делаем ход фигурой
+        // отрисовка хода фигурой
         private void Step()
         {
 
