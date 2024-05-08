@@ -19,7 +19,7 @@ namespace ChessEngine
     /// <summary>
     /// Положение фигур, движение фигур, оценка поля.
     /// </summary>
-    internal class Pole
+    internal class Engine
     {
         /// <summary>
         /// Стоимость пешки
@@ -76,11 +76,16 @@ namespace ChessEngine
         public readonly string initialState = "34567890STVWXZ12--------------------------------IKLMNPQRABCDEFGH";
 
         /// <summary>
+        /// Текущее положение фигур
+        /// </summary>
+        public string currentState = "----------------------------------------------------------------";
+
+        /// <summary>
         /// Подсчет стоимости положения фигур для Белых
         /// </summary>
-        /// <param name="state">строка состояния поля</param>
+        /// <param name="state">положение фигур на доске</param>
         /// <returns>оценка (int)</returns>
-        public int currentValueWhite(string state)
+        public int ValueWhite(string state)
         {
             int value = 0;
             foreach(char c in state)
@@ -118,9 +123,9 @@ namespace ChessEngine
         /// <summary>
         /// Подсчет стоимости положения фигур для Черных
         /// </summary>
-        /// <param name="state">строка состояния поля</param>
+        /// <param name="state">положение фигур на доске</param>
         /// <returns>оценка (int)</returns>
-        public int currentValueBlack(string state)
+        public int ValueBlack(string state)
         {
             int value = 0;
             foreach (char c in state)

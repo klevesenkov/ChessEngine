@@ -13,7 +13,7 @@ namespace ChessEngine
         /// <summary>
         /// ’ранение состо€ни€ пол€, движение фигур, оценка состо€ни€
         /// </summary>
-        Pole pole = new();
+        Engine engine = new();
 
         /// <summary>
         /// начальна€ координата фигуры на доске
@@ -43,22 +43,17 @@ namespace ChessEngine
         /// <summary>
         /// рассто€ние между фигурами
         /// </summary>
-        const int offsetY = 99;
-
-        /// <summary>
-        /// “екущее состо€ние пол€
-        /// </summary>
-        string currentState = "----------------------------------------------------------------";
+        const int offsetY = 99;        
 
         public FrmMainForm()
         {
             InitializeComponent();
             imgDoska = Properties.Resources.doska;
-            drawingPole(pole.initialState);  
+            drawingPole(engine.initialState);  
 
-            //////////////////////////////////////////////
-            label2.Text = pole.currentValueWhite(pole.initialState).ToString();
-            label3.Text = pole.currentValueBlack(pole.initialState).ToString();
+            //////////////////  “ест   ////////////////////////////
+            label2.Text = engine.ValueWhite(engine.initialState).ToString();
+            label3.Text = engine.ValueBlack(engine.initialState).ToString();
             /////////////////////////////////////////////////
         }
 
@@ -87,7 +82,7 @@ namespace ChessEngine
         }
 
         /// <summary>
-        /// ќтрисовка фигур на доске
+        /// ќтрисовка фигур на доске (отрисовка сделанного хода)
         /// </summary>
         /// <param name="newState">новое состо€ние фигур</param>
         private void drawingPole(string newState)
@@ -169,7 +164,7 @@ namespace ChessEngine
             // отрисовываем ход
             for (int i = 0; i <= 63; i++)
             {
-                if (newState[i] != currentState[i])
+                if (newState[i] != engine.currentState[i])
                 {
                     y = i / 8;
                     x = i - 8 * y;                    
