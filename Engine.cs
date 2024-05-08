@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing.Text;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,8 +25,8 @@ namespace ChessEngine
         /// <summary>
         /// Стоимость пешки
         /// </summary>
-        const int costPeshka = 1;  
-        
+        const int costPeshka = 1;
+
         /// <summary>
         /// Стоимость Коня
         /// больше определенного количество фигур на доске
@@ -69,7 +70,7 @@ namespace ChessEngine
         /// Стоимость Короля
         /// </summary>
         const int costKorol = 1000;
-                
+
         /// <summary>
         /// Начальное положение
         /// </summary>
@@ -78,7 +79,67 @@ namespace ChessEngine
         /// <summary>
         /// Текущее положение фигур
         /// </summary>
-        public string currentState = "----------------------------------------------------------------";
+        public string currentState = "34567890STVWXZ12--------------------------------IKLMNPQRABCDEFGH";
+
+        /// <summary>
+        /// лучший ход
+        /// </summary>
+        public string bestState = "";
+
+        /// <summary>
+        /// оценка лучшего хода
+        /// </summary>
+        private int bestValue = 0;
+
+        /// <summary>
+        /// Ход Белых или Черных
+        /// </summary>
+        private bool activeWhite = true;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        /// <summary>
+        /// расчет оценки позиции и если она лучше предыдуще, то делаем эту позицию лучшей из возможных
+        /// </summary>
+        /// <param name="state"></param>
+        private void calculateValue(string state)
+        {
+            // оценка позиции
+            int value = 0;
+
+            if(activeWhite) value = ValueWhite(state);   
+            else value = ValueBlack(state);
+
+            if (value > bestValue) { currentState = state; bestValue = value; }            
+        }
+
+        /// <summary>
+        /// функция вычитания из a b, если результат отрицаиельный то он равен 0
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        private int Minus(int a, int b)
+        {
+            int c = 0;
+            int result = a - b;
+            if (result < 0) result = 0;
+            return c;
+        }
+
+        /// <summary>
+        /// функция сложения из a b, если результат больше 64 то он равен 64
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        private int Plus(int a, int b)
+        {
+            int c = 0;
+            int result = a - b;
+            if (result > 64) result = 64;
+            return c;
+        }
 
         /// <summary>
         /// Подсчет стоимости положения фигур для Белых
@@ -88,13 +149,16 @@ namespace ChessEngine
         public int ValueWhite(string state)
         {
             int value = 0;
-            foreach(char c in state)
+            foreach (char c in state)
             {
                 if (c == '3' || c == '0') { value -= costLadya; }
-                if ((64 - (state.Count(c => c == '-')) / 32) * 100 >= percent) {
+                if ((64 - (state.Count(c => c == '-')) / 32) * 100 >= percent)
+                {
                     if (c == '4' || c == '9') { value -= costKonMorePercent; }
-                    if (c == '5' || c == '8') { value -= costSlonMorePercent; } }
-                else {
+                    if (c == '5' || c == '8') { value -= costSlonMorePercent; }
+                }
+                else
+                {
                     if (c == '4' || c == '9') { value -= costKonLessPercent; }
                     if (c == '5' || c == '8') { value -= costSlonLessPercent; }
                 }
@@ -162,6 +226,50 @@ namespace ChessEngine
             }
             return value;
         }
+
+        /// <summary>
+        /// все возможные ходы пешкой
+        /// </summary>
+        /// <param name="c">код пешки</param>
+        private void PeshkaSteps(char c)
+        {
+            // ходит вперёд на 2 клетки done
+            // ходит вперед на 1 клетку
+            // ест фигуру
+
+            // координаты пешки на доске
+            int i = currentState.IndexOf(c);
+            int y = i / 8;
+            int x = i - 8 * y;
+
+            // расположение фигур после возможного хода
+            string state = "";
+
+            // Ход Белых или Черных
+            if (activeWhite)
+            {
+                // движение вперёд на 2 клетки, если еще не ходила и есть свободные поля
+                if (currentState[Minus(i,8)] == '-' && currentState[Minus(i,16)] == '-')
+                {
+                    state = currentState.Replace(c, '-');
+                    state = state.Remove(Minus(i, 16), 1).Insert(Minus(i, 16), c.ToString());
+                    calculateValue(state);
+                }
+
+            }
+            else
+            {
+                // движение вперёд на 2 клетки, если еще не ходила и есть свободные поля
+                if (currentState[Plus(i, 8)] == '-' && currentState[Plus(i, 16)] == '-')
+                {
+                    state = currentState.Replace(c, '-');
+                    state = state.Remove(Plus(i, 16), 1).Insert(Plus(i, 16), c.ToString());
+                    calculateValue(state);
+                }
+            }
+
+        }
+
+
     }
-   
 }
